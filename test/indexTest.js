@@ -1,19 +1,21 @@
 describe('employees', function() {
-  describe('updateEmployeeWithKeyAndValue(employee, key, value)', function () {
-    beforeEach(function () {
-      for (const key in employee) {
-        delete employee[key];
-      }
-
+  describe('updateEmployeeWithKeyAndValue(employee, key, value)', function (employee,key,value) { 
+    
+      
+    beforeEach(function (employee) {       
+      for (const key in employee) { 
+        delete employee[key]; 
+      } 
       employee.name = 'Sam';
-    });
-
-    it('returns an employee with the original key value pairs and the new key value pair', function () {
+     });   
+    
+    it('returns an employee with the original key value pairs and the new key value pair', function () { 
       expect(updateEmployeeWithKeyAndValue(employee, 'streetAddress', '11 Broadway')).to.eql({
         name: 'Sam',
-        streetAddress: '11 Broadway'
-      });
-    });
+        streetAddress: '11 Broadway'  
+      }); 
+      
+    }); 
 
     it('it does not modify the original employee, but rather returns a clone with the new data', function () {
       updateEmployeeWithKeyAndValue(employee, 'streetAddress', '11 Broadway');
@@ -27,8 +29,8 @@ describe('employees', function() {
       expect(destructivelyUpdateEmployeeWithKeyAndValue(employee, 'streetAddress', '12 Broadway')).to.eql({
         name: 'Sam',
         streetAddress: '12 Broadway'
-      });
-
+      
+      });  
       expect(employee).to.eql({
         name: 'Sam',
         streetAddress: '12 Broadway'
